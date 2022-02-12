@@ -13,13 +13,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
-<style>
-    .counter {
-        size: 44px;
-        color: #2978b1;
-        padding-top: 10%;
-    }
-</style>
 <body>
 
 <nav class="navbar navbar-default">
@@ -36,10 +29,28 @@
         </div>
     </div>
 </nav>
+<style>
+    .effect:hover {
+        background: rgba(0,0,0,0);
+        color: #3a7999;
+        box-shadow: inset 0 0 0 3px #3a7999;
+    }
 
+</style>
 <div class="container">
-    <h1 class="counter">Counter: {{ .Counter }}</h1>
-    <h1>Hello {{ .Name }}</h1>
+
+    <div class="col-sm-3 effect"  style="text-align: center;">
+        <div class="row">
+            <div><h2>{{ .Name }}</h2></div>
+        </div>
+        <div class="row text-center" style="display: flex; justify-content: center">
+            <img src="https://img.mvideo.ru/Pdb/30059037b.jpg" class="col-sm-8 rounded"/>
+        </div>
+        <hr>
+        <div class="row " style="padding-bottom: 20px">
+            <span>Продаётся iPhone 13 Pro пользовался только неделю, в отл состояниее акум 99%. Только сегодня...</span>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/Ogoyukin/doska/app"
 	"html/template"
 	"net/http"
 )
 
 func main() {
-
 	http.HandleFunc("/hello", Handler)
 	http.ListenAndServe(":8090", nil)
 }
@@ -19,12 +19,16 @@ type Params struct {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	config := app.Config{
+		Name: "iPhone 13 Pro",
+	}
+
 	counter++
 	tmp, _ := template.ParseFiles("templates/index.html")
 
 	name := r.URL.Query().Get("name")
 	if name == "" {
-		name = "Innokenty"
+		name = config.Name
 	}
 
 	tmp.Execute(w, Params{
