@@ -8,7 +8,7 @@
 * [MySQL](https://dev.mysql.com/downloads/mysql/)
 
 ### Запуск:
-* `git clone https://github.com/Ogoyukin/doska.git` - Клонироовать репозиторий
+* `git clone https://github.com/Ogoyukin/doska.git`
 * `go mod tidy` - Скачать зависиости
 * `go build` - Собрать проект(компиляция)
 
