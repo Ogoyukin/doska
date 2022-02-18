@@ -7,6 +7,11 @@
 * Golang
 * MySQL
 
+### Запуск:
+* Клонироовать репозиторий: git clone https://github.com/Ogoyukin/doska.git
+* Скачать зависиости: go mod tidy
+* Собрать проект(компиляция): go build
+
 ## Roadmap:
 ### MVP
 * Шаблон страницы с объявлениями - ✅
