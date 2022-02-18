@@ -8,9 +8,9 @@
 * MySQL
 
 ### Запуск:
-* Клонироовать репозиторий: git clone https://github.com/Ogoyukin/doska.git
-* Скачать зависиости: go mod tidy
-* Собрать проект(компиляция): go build
+* `git clone https://github.com/Ogoyukin/doska.git` - Клонироовать репозиторий
+* `go mod tidy` - Скачать зависиости
+* `go build` - Собрать проект(компиляция)
 
 ## Roadmap:
 ### MVP
