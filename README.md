@@ -6,6 +6,7 @@
 ### Требовании:
 * [Golang](https://go.dev/doc/install)
 * [MySQL](https://dev.mysql.com/downloads/mysql/)
+* [Git](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop)
 
 ### Запуск:
 * `git clone https://github.com/Ogoyukin/doska.git`
