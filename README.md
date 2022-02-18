@@ -4,8 +4,8 @@
 Сервис в котором пользователи могут размещать объявления и откликаться на них и связываться с продавцом
 
 ### Требовании:
-* Golang
-* MySQL
+* [Golang](https://go.dev/doc/install)
+* [MySQL](https://dev.mysql.com/downloads/mysql/)
 
 ### Запуск:
 * `git clone https://github.com/Ogoyukin/doska.git` - Клонироовать репозиторий
