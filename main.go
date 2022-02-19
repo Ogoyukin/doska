@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/Ogoyukin/doska/app"
 	"html/template"
 	"net/http"
 )
@@ -19,17 +18,12 @@ type Params struct {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	config := app.Config{
-		Name: "iPhone 13 Pro",
-	}
 
 	counter++
 	tmp, _ := template.ParseFiles("templates/index.html")
+	tmp.ParseGlob("templates/*.html")
 
 	name := r.URL.Query().Get("name")
-	if name == "" {
-		name = config.Name
-	}
 
 	tmp.Execute(w, Params{
 		Counter: counter,
