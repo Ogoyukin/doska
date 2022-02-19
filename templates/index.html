@@ -6,21 +6,23 @@
 {{ template "nav-bar" }}
 <div class="container">
 
-    <div class="col-sm-3 effect"  style="text-align: center;">
+    {{ range .Items }}
+    <div class="col-sm-3 effect"  style="text-align: center; max-height: 410px; max-width: 480px">
         <div class="row">
-            <div><h2>{{ .Name }}</h2></div>
+            <div><h2>{{ .Title }}</h2></div>
         </div>
         <div class="row text-center" style="display: flex; justify-content: center">
-            <img src="https://img.mvideo.ru/Pdb/30059037b.jpg" class="col-sm-8 rounded"/>
+            <img src="{{ .Img }}" class="col-sm-8 rounded"/>
         </div>
         <hr>
         <div class="row ">
-            <span>Продаётся iPhone 13 Pro пользовался только неделю, в отл состояниее акум 99%. Только сегодня...</span>
+            <span>{{ .Description }}</span>
         </div>
         <div class="row " style="padding-bottom: 20px">
-            <h4>Цена: 50 000 руб</h4>
+            <h4>Цена: {{ .Price }}</h4>
         </div>
     </div>
+    {{ end }}
 
 </div>
 </body>
