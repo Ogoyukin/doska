@@ -1,17 +1,28 @@
 package main
 
 import (
+	"database/sql"
+	"fmt"
 	"github.com/Ogoyukin/doska/pkg"
+	_ "github.com/go-sql-driver/mysql"
 	"html/template"
+	"log"
 	"net/http"
 )
 
+var db *sql.DB
+
 func main() {
+	dataSource, err := sql.Open("mysql", "root:root@/doska")
+
+	db = dataSource
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	http.HandleFunc("/hello", Handler)
 	http.ListenAndServe(":8090", nil)
 }
-
-var counter = 0
 
 type Params struct {
 	Counter int
@@ -20,32 +31,25 @@ type Params struct {
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 
-	counter++
 	tmp, _ := template.ParseFiles("templates/index.html")
 	tmp.ParseGlob("templates/*.html")
 
-	items := []pkg.Item{{
-		ID:          1,
-		Price:       50000,
-		Title:       " Продаётся iPhone 13",
-		Description: "Продаётся iPhone 13 Pro пользовался только неделю, в отл состояниее акум 99%. Только сегодня...",
-		Img:         "https://img.mvideo.ru/Pdb/30059037b.jpg",
-	}}
+	products := []pkg.Item{}
 
-	for i := 0; i < 20; i++ {
-		img := "https://telefonplus.ru/wp-content/uploads/2020/10/iphone-12-blue-select-2020.png"
-
-		if i%2 == 0 {
-			img = "https://img.mvideo.ru/Pdb/30059037b.jpg"
+	rows, err := db.Query("select * from doska.items")
+	if err != nil {
+		panic(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		p := pkg.Item{}
+		err := rows.Scan(&p.ID, &p.Price, &p.Title, &p.Description, &p.Img)
+		if err != nil {
+			fmt.Println(err)
+			continue
 		}
-		items = append(items, pkg.Item{
-			ID:          1,
-			Price:       50000,
-			Title:       " Продаётся iPhone 12",
-			Description: "Продаётся iPhone 12  пользовался только неделю, в отл состояниее акум 99%. Только сегодня...",
-			Img:         img,
-		})
+		products = append(products, p)
 	}
 
-	tmp.Execute(w, Params{Items: items})
+	tmp.Execute(w, Params{Items: products})
 }
